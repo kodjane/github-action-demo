@@ -19,11 +19,8 @@ jobs:
           java-version: '17' # Change to your required Java version
           distribution: 'temurin'
 
-      - name: Install dependencies
-        run: mvn install --no-cache
-
-      - name: Run unit tests
-        run: mvn test
+      - name: Build and package
+        run: mvn clean package
 
 #      - name: Build Docker image
 #        run: |
