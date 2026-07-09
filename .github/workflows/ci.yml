@@ -32,9 +32,7 @@ jobs:
         run: |
           docker build -t github-action-demo:latest .
           docker tag github-action-demo:latest github-action-demo:${{ github.sha }}
-
-      - name: List the docker  images
-        run: docker images
+          docker images
 #
 #      - name: Login to Docker Hub
 #        env:
