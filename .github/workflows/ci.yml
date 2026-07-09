@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - auomation_with_github_actions
+      - automation_with_github_actions
 #  pull_request:
 #    branches:
 #      - master
