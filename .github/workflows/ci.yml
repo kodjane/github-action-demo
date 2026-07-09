@@ -25,6 +25,9 @@ jobs:
       - name: Build and package
         run: mvn clean package
 
+      - name: List the contents of the target directory
+        run: ls -la target
+
 #      - name: Build Docker image
 #        run: |
 #          docker build -t github-action-demo:latest .
