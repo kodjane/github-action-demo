@@ -22,6 +22,13 @@ jobs:
           java-version: '17' # Change to your required Java version
           distribution: 'temurin'
 
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
+          restore-keys: ${{runner.os}}-maven
+
       - name: Build and package
         run: mvn clean package
 
@@ -33,7 +40,7 @@ jobs:
           docker build -t github-action-demo:latest .
           docker tag github-action-demo:latest github-action-demo:${{ github.sha }}
           docker images
-#
+
 #      - name: Login to Docker Hub
 #        env:
 #          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
