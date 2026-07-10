@@ -37,8 +37,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t github-action-demo:latest .
-          docker tag github-action-demo:latest github-action-demo:${{ github.sha }}
+          docker build -t akodjane/github-action-demo:latest .
+          docker tag akodjane/github-action-demo:latest github-action-demo:${{ github.sha }}
           docker images
 
       - name: Login to Docker Hub
