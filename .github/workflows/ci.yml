@@ -50,4 +50,3 @@ jobs:
       - name: Push Docker image
         run: |
           docker push adkodjane/github-action-demo:latest
-          docker push adkodjane/github-action-demo:${{ github.sha }}
