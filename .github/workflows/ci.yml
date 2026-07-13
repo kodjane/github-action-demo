@@ -42,19 +42,13 @@ jobs:
         run: |
           echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
       - name: Build Docker image
-        id: build
-        run: | 
-        # Extract the tag name from GITHUB_REF IMAGE_TAG=${GITHUB_REF##*/}
-        # This extracts the tag name from GITHUB_REF echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
-        # Set it as an environment variable docker build -t adkodjane/github-action-demo:${IMAGE_TAG} .
-
-      - name: List all Docker images
-        run: docker images
+        run: |
+          docker build -t adkodjane/github-action-demo:latest .
+          docker tag adkodjane/github-action-demo:latest github-action-demo:${{ github.sha }}
+          docker images
 
       - name: Push Docker image
         run: |
-          docker push adkodjane/github-action-demo:${{env.IMAGE_TAG}}
+          docker push adkodjane/github-action-demo:latest
+          docker push adkodjane/github-action-demo:${{ github.sha }}
