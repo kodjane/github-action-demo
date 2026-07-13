@@ -45,7 +45,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t adkodjane/github-action-demo:latest .
-          docker tag adkodjane/github-action-demo:latest github-action-demo:${{ github.sha }}
+          docker tag adkodjane/github-action-demo:latest adkodjane/github-action-demo:${{ github.sha }}
           docker images
 
       - name: Push Docker image
